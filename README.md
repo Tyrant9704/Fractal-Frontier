@@ -1,13 +1,9 @@
-# ShaderConverter
-Convert Shaders 3.x to GDShaders 4.x
-Version 1.1.1
+# Frectal Frontier
+Demo version with debug mode of Fractal Frontier
+Version Beta 1.1
 
-### How to
+### File
 
-1. Enable plugin
-2. Paste all *.shader (Godot 3.x) files to your project.
-3. Go to Menu -> Project -> Tools -> Convert Shaders 3.x to GDShaders 4.x
-4. Use your shaders as needed
+https://drive.google.com/file/d/1P250sG7ZcBgB1MqCJewupYwFpkxWPeUA/view?usp=sharing
 
-Execute ShaderConverter from tools menu
-![Locales editor](https://raw.githubusercontent.com/VP-GAMES/ShaderConverter/main/.github/images/Execute.png)
+
