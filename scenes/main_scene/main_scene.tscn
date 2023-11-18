@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8o6ishvylut"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_v2i34"]
+[ext_resource type="PackedScene" uid="uid://62sdet35rtvt" path="res://entities/player/player.tscn" id="1_yt1lv"]
+
+[node name="main_scene" type="Node2D"]
+script = ExtResource("1_v2i34")
+
+[node name="player" parent="." instance=ExtResource("1_yt1lv")]
+top_level = true
+position = Vector2(483, 286)
+rotation = 4.71239
+
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2m4w77cosnbu"]
+
+[ext_resource type="Script" path="res://entities/asteroid/asteroid.gd" id="1_vf8je"]
+[ext_resource type="Texture2D" uid="uid://dr606f2mculwf" path="res://textures/asteroid/asteroid_v2.png" id="2_nqiai"]
+[ext_resource type="Texture2D" uid="uid://bpmv5bu08voab" path="res://textures/asteroid/asteroid_v2_light.png" id="3_v7wy6"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1hiq0"]
+blend_mode = 1
+
+[node name="asteroid" type="Area2D" groups=["asteroids"]]
+process_mode = 1
+show_behind_parent = true
+position = Vector2(590, 338)
+scale = Vector2(3, 3)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_vf8je")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+scale = Vector2(0.063, 0.063)
+texture = ExtResource("2_nqiai")
+
+[node name="PointLight2D" type="Sprite2D" parent="Sprite2D2"]
+material = SubResource("CanvasItemMaterial_1hiq0")
+texture = ExtResource("3_v7wy6")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+visible = false
+scale = Vector2(0.5, 0.5)
+polygon = PackedVector2Array(-0.666672, -30.3333, 26, -26, 15, -7.66667, 27.6667, 10.3333, 2.66667, 29.6667, -23.3333, 26, -29.3333, -5.66667, -25, -23.6667)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

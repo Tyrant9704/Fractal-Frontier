@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba3ylmkgbkvc6"]
+
+[ext_resource type="Texture2D" uid="uid://dq50oltr48re6" path="res://textures/player_ship/new_ship.png" id="1_qnhoy"]
+[ext_resource type="Texture2D" uid="uid://b0pvon1r3kv17" path="res://textures/player_ship/new_shi_lightp.png" id="2_0bx1q"]
+
+[node name="health_point" type="TextureRect"]
+custom_minimum_size = Vector2(75, 75)
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.2, 0.2)
+size_flags_horizontal = 0
+size_flags_vertical = 4
+texture = ExtResource("1_qnhoy")
+expand_mode = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(37.785, 37.045)
+scale = Vector2(0.145, 0.145)
+texture = ExtResource("2_0bx1q")

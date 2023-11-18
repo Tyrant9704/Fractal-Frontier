@@ -1,0 +1,83 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2qcrkjie8fg0"]
+
+[ext_resource type="Script" path="res://scenes/loading_screen/loading_screen_start.gd" id="1_vlg1n"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="2_efqfm"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="3_7wov8"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="4_bayi2"]
+[ext_resource type="Texture2D" uid="uid://wth08828sfdc" path="res://textures/UI/loading_bar_frame.png" id="5_8bb8g"]
+[ext_resource type="Texture2D" uid="uid://cpineb47j4l0" path="res://textures/UI/loading_bar_fill.png" id="6_mwdpk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6odb1"]
+shader = ExtResource("2_efqfm")
+shader_parameter/bg_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6guh"]
+shader = ExtResource("4_bayi2")
+
+[node name="loading_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vlg1n")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1956, 1104)
+render_target_update_mode = 4
+
+[node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_6odb1")
+position = Vector2(976, 547)
+scale = Vector2(1.83959, 1.50014)
+texture = ExtResource("3_7wov8")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_v6guh")
+layout_mode = 2
+texture = ExtResource("3_7wov8")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 76.95
+offset_top = 325.09
+offset_right = 95.9502
+offset_bottom = 63.3754
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.825, 0.825)
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+alignment = 1
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+value = 45.0
+texture_under = ExtResource("5_8bb8g")
+texture_progress = ExtResource("6_mwdpk")

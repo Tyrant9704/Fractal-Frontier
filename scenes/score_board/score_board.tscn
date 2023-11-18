@@ -1,0 +1,370 @@
+[gd_scene load_steps=15 format=3 uid="uid://26dmg8je0c1d"]
+
+[ext_resource type="FontFile" uid="uid://c46y60ln0ljmu" path="res://fonts/digital-7.ttf" id="1_6hruj"]
+[ext_resource type="Script" path="res://scenes/score_board/score_board.gd" id="1_hji3t"]
+[ext_resource type="Texture2D" uid="uid://cyiamu6knox4b" path="res://textures/UI/arrow.png" id="3_30i3c"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="4_lhpr7"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="5_brpwi"]
+[ext_resource type="Texture2D" uid="uid://d1tdw2yavbkmg" path="res://textures/UI/popup_display_v2.png" id="6_4scoq"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="6_yd6pu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uvego"]
+shader = ExtResource("4_lhpr7")
+shader_parameter/bg_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bv23j"]
+shader = ExtResource("6_yd6pu")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5nvae"]
+size = Vector2(57.9, 63.41)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4adpf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uc1td"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_oks87"]
+device = -1
+keycode = 70
+unicode = 102
+
+[sub_resource type="Shortcut" id="Shortcut_x1nsd"]
+events = [SubResource("InputEventKey_oks87")]
+
+[node name="score_board" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hji3t")
+
+[node name="background" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.51875
+anchor_top = -0.522222
+anchor_right = 1.51875
+anchor_bottom = 1.52222
+offset_left = 498.0
+offset_top = 282.0
+offset_right = -498.0
+offset_bottom = -282.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="background"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="background/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="background" type="Sprite2D" parent="background/SubViewportContainer/SubViewport"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_uvego")
+position = Vector2(976, 547)
+scale = Vector2(1.83959, 1.50014)
+texture = ExtResource("5_brpwi")
+
+[node name="TextureRect" type="TextureRect" parent="background"]
+z_index = 5
+material = SubResource("ShaderMaterial_bv23j")
+layout_mode = 2
+texture = ExtResource("5_brpwi")
+
+[node name="scoreboard" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -170.0
+offset_top = 24.0
+offset_right = 177.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="scoreboard"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="scoreboard/CenterContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 150
+theme_override_constants/v_separation = 15
+columns = 2
+
+[node name="player_name_7" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_7" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_6" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_6" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_5" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_5" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_4" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_4" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_3" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_3" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_2" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_2" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="player_name_1" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "shit"
+
+[node name="score_1" type="Label" parent="scoreboard/CenterContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 45
+text = "1000"
+
+[node name="background_popup" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -319.1
+offset_right = 305.3
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="background_popup"]
+layout_mode = 2
+texture = ExtResource("6_4scoq")
+expand_mode = 1
+
+[node name="name_input" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.993
+offset_left = -206.815
+offset_top = 205.715
+offset_right = 573.185
+offset_bottom = 35.4949
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="name_input"]
+layout_mode = 2
+theme_override_constants/separation = 90
+alignment = 1
+
+[node name="column_1" type="VBoxContainer" parent="name_input/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="next" type="TouchScreenButton" parent="name_input/HBoxContainer/column_1"]
+position = Vector2(16.31, -128.335)
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="label_c_1" type="Label" parent="name_input/HBoxContainer/column_1"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 356
+text = "A"
+
+[node name="prev" type="TouchScreenButton" parent="name_input/HBoxContainer/column_1"]
+position = Vector2(151.275, 491.295)
+rotation = 3.14159
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="column_2" type="VBoxContainer" parent="name_input/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="next" type="TouchScreenButton" parent="name_input/HBoxContainer/column_2"]
+position = Vector2(16.31, -128.335)
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="label_c_2" type="Label" parent="name_input/HBoxContainer/column_2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 356
+text = "A"
+
+[node name="prev" type="TouchScreenButton" parent="name_input/HBoxContainer/column_2"]
+position = Vector2(151.275, 491.295)
+rotation = 3.14159
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="column_3" type="VBoxContainer" parent="name_input/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="next" type="TouchScreenButton" parent="name_input/HBoxContainer/column_3"]
+position = Vector2(16.31, -128.335)
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="label_c_3" type="Label" parent="name_input/HBoxContainer/column_3"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 356
+text = "A"
+
+[node name="prev" type="TouchScreenButton" parent="name_input/HBoxContainer/column_3"]
+position = Vector2(151.275, 491.295)
+rotation = 3.14159
+scale = Vector2(2.125, 2.125)
+texture_normal = ExtResource("3_30i3c")
+shape = SubResource("RectangleShape2D_5nvae")
+
+[node name="enter_name_label" type="VBoxContainer" parent="."]
+z_as_relative = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.119
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -264.0
+offset_top = -0.260002
+offset_right = 696.0
+offset_bottom = 441.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_constants/separation = 665
+alignment = 1
+
+[node name="Label" type="Label" parent="enter_name_label"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 135
+text = "Enter your name"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="enter_name_label"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uc1td")
+shortcut = SubResource("Shortcut_x1nsd")
+text = "Submit"
+flat = true
+
+[node name="buttons" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -252.0
+offset_top = 461.765
+offset_right = 253.0
+offset_bottom = -18.2344
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 205
+
+[node name="retry" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uc1td")
+text = "Try Again"
+flat = true
+
+[node name="menu" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_6hruj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uc1td")
+text = "Menu"
+flat = true
+
+[connection signal="pressed" from="enter_name_label/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="buttons/retry" to="." method="_on_retry_pressed"]
+[connection signal="pressed" from="buttons/menu" to="." method="_on_menu_pressed"]

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4q10qlrqiltr"]
+
+[ext_resource type="AudioStream" uid="uid://d28bthushmu7j" path="res://sounds/2021-08-30_-_Boss_Time_-_www.FesliyanStudios.com.mp3" id="1_5m33n"]
+[ext_resource type="AudioStream" uid="uid://veyplv05dyvy" path="res://sounds/8-bit-explosion_F.wav" id="1_54vxh"]
+[ext_resource type="Script" path="res://scripts/music.gd" id="1_uh4cv"]
+[ext_resource type="AudioStream" uid="uid://cb6vngvd2pn5e" path="res://sounds/8-bit-kit-lazer-5.wav" id="2_uhwxi"]
+[ext_resource type="AudioStream" uid="uid://bxjgnp7u5gljf" path="res://sounds/8-bit-power-down.wav" id="3_oh8vf"]
+[ext_resource type="AudioStream" uid="uid://djuvcvyc2xwug" path="res://sounds/engine_sound.wav" id="4_5njlw"]
+[ext_resource type="AudioStream" uid="uid://dxsm7ouwum3dk" path="res://sounds/retro-16-bit-fx-shot-3_F_major.wav" id="5_3stug"]
+[ext_resource type="AudioStream" uid="uid://cw1tqhea2qvgc" path="res://sounds/Zane Little - Space Cadet Training Montage.mp3" id="7_lc4vr"]
+
+[node name="music_handler" type="Node"]
+process_mode = 3
+script = ExtResource("1_uh4cv")
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_54vxh")
+bus = &"sfx"
+
+[node name="laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_uhwxi")
+bus = &"sfx"
+
+[node name="power_down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_oh8vf")
+bus = &"sfx"
+
+[node name="engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5njlw")
+bus = &"sfx"
+
+[node name="laser_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_3stug")
+bus = &"sfx"
+
+[node name="menu_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5m33n")
+bus = &"music"
+
+[node name="gameplay_music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_lc4vr")
+bus = &"music"
+
+[node name="unused_0" type="AudioStreamPlayer" parent="."]
+
+[node name="unused_1" type="AudioStreamPlayer" parent="."]
+
+[node name="unused_2" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="menu_music" to="." method="_on_menu_music_finished"]
+[connection signal="finished" from="gameplay_music" to="." method="_on_gameplay_music_finished"]

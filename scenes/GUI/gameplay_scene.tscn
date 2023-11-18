@@ -1,0 +1,259 @@
+[gd_scene load_steps=21 format=3 uid="uid://go2g4veqh8hx"]
+
+[ext_resource type="PackedScene" uid="uid://b8o6ishvylut" path="res://scenes/main_scene/main_scene.tscn" id="1_pryte"]
+[ext_resource type="Script" path="res://scenes/GUI/gameplay_scene.gd" id="1_swm55"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="2_081g2"]
+[ext_resource type="Texture2D" uid="uid://bxkten0stqndd" path="res://textures/UI/boost_arrow.png" id="2_twut1"]
+[ext_resource type="Texture2D" uid="uid://bf4tqa2jbvr3g" path="res://textures/UI/shoot_button.png" id="3_2ecv6"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="3_c7i14"]
+[ext_resource type="Texture2D" uid="uid://boi1gtanjw5ka" path="res://textures/UI/dir_arrow.png" id="4_ic5fa"]
+[ext_resource type="Script" path="res://scenes/main_scene/health_bar.gd" id="7_b6my3"]
+[ext_resource type="PackedScene" uid="uid://ba3ylmkgbkvc6" path="res://scripts/health_point.tscn" id="8_aoq5o"]
+[ext_resource type="FontFile" uid="uid://c46y60ln0ljmu" path="res://fonts/digital-7.ttf" id="9_mbxbr"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="10_0na3l"]
+[ext_resource type="PackedScene" uid="uid://cnnu4h4ix1wxw" path="res://scripts/audio_slider.tscn" id="11_sa3ib"]
+[ext_resource type="Texture2D" uid="uid://d1tdw2yavbkmg" path="res://textures/UI/popup_display_v2.png" id="11_vjtpt"]
+[ext_resource type="Texture2D" uid="uid://r3ny5333nqsg" path="res://textures/UI/pause_button.png" id="13_jy1e4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yks28"]
+shader = ExtResource("2_081g2")
+shader_parameter/bg_color = null
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7i5kq"]
+radius = 57.2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bqaca"]
+shader = ExtResource("10_0na3l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b8a2o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4adpf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmrhy"]
+
+[node name="gameplay_scene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_swm55")
+
+[node name="stars" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_yks28")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_c7i14")
+
+[node name="health_bar" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 30.0
+offset_right = 636.0
+offset_bottom = 112.0
+script = ExtResource("7_b6my3")
+health_point = ExtResource("8_aoq5o")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -475.0
+offset_right = 475.0
+offset_bottom = 106.0
+grow_horizontal = 2
+pivot_offset = Vector2(483.825, 58.707)
+theme_override_fonts/font = ExtResource("9_mbxbr")
+theme_override_font_sizes/font_size = 50
+text = "520"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="buttons" type="VBoxContainer" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -158.075
+offset_top = -276.74
+offset_right = -58.075
+offset_bottom = -41.74
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_vertical = 4
+size_flags_stretch_ratio = 20.0
+theme_override_constants/separation = 35
+
+[node name="boost" type="TextureRect" parent="buttons"]
+layout_mode = 2
+texture = ExtResource("2_twut1")
+expand_mode = 4
+stretch_mode = 6
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="buttons/boost"]
+position = Vector2(52.045, 53.175)
+shape = SubResource("CircleShape2D_7i5kq")
+action = "up"
+
+[node name="shoot" type="TextureRect" parent="buttons"]
+layout_mode = 2
+texture = ExtResource("3_2ecv6")
+expand_mode = 4
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="buttons/shoot"]
+position = Vector2(48.995, 49.65)
+shape = SubResource("CircleShape2D_7i5kq")
+action = "shoot"
+
+[node name="buttons_2" type="HBoxContainer" parent="."]
+z_index = 1
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 51.71
+offset_top = -141.81
+offset_right = 286.71
+offset_bottom = -41.8099
+grow_vertical = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 35
+alignment = 1
+
+[node name="left" type="TextureRect" parent="buttons_2"]
+layout_mode = 2
+texture = ExtResource("4_ic5fa")
+expand_mode = 2
+flip_h = true
+flip_v = true
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="buttons_2/left"]
+position = Vector2(52.46, 49.99)
+shape = SubResource("CircleShape2D_7i5kq")
+action = "left"
+
+[node name="right" type="TextureRect" parent="buttons_2"]
+layout_mode = 2
+texture = ExtResource("4_ic5fa")
+expand_mode = 2
+
+[node name="TouchScreenButton2" type="TouchScreenButton" parent="buttons_2/right"]
+position = Vector2(49.32, 49.815)
+shape = SubResource("CircleShape2D_7i5kq")
+action = "right"
+
+[node name="tv_shader" type="TextureRect" parent="."]
+z_index = 2
+material = SubResource("ShaderMaterial_bqaca")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1097.0
+offset_top = -620.0
+offset_right = 859.0
+offset_bottom = 484.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("3_c7i14")
+
+[node name="pause_menu" type="MarginContainer" parent="."]
+visible = false
+z_index = 1
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -132.12
+offset_top = 142.615
+offset_right = 179.48
+offset_bottom = -210.845
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.67, 1.67)
+pivot_offset = Vector2(197.971, 64.2816)
+
+[node name="TextureRect" type="TextureRect" parent="pause_menu"]
+layout_mode = 2
+texture = ExtResource("11_vjtpt")
+expand_mode = 1
+
+[node name="pause_popup" type="VBoxContainer" parent="pause_menu"]
+custom_minimum_size = Vector2(220.72, 55.12)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="music" type="Label" parent="pause_menu/pause_popup"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_mbxbr")
+theme_override_font_sizes/font_size = 20
+text = "music"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="music_slider" parent="pause_menu/pause_popup" instance=ExtResource("11_sa3ib")]
+process_mode = 3
+layout_mode = 2
+
+[node name="sound effects" type="Label" parent="pause_menu/pause_popup"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_mbxbr")
+theme_override_font_sizes/font_size = 20
+text = "sfx"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="sfx_slider" parent="pause_menu/pause_popup" instance=ExtResource("11_sa3ib")]
+process_mode = 3
+layout_mode = 2
+
+[node name="back_to_menu" type="Button" parent="pause_menu/pause_popup"]
+process_mode = 2
+layout_mode = 2
+theme_override_fonts/font = ExtResource("9_mbxbr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b8a2o")
+text = "Main menu"
+flat = true
+
+[node name="main_scene" parent="." instance=ExtResource("1_pryte")]
+process_mode = 1
+
+[node name="pause_button" type="Button" parent="."]
+process_mode = 3
+z_index = 1
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -104.49
+offset_top = 18.49
+offset_right = -24.49
+offset_bottom = 98.49
+grow_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4adpf")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pmrhy")
+icon = ExtResource("13_jy1e4")
+flat = true
+
+[connection signal="value_changed" from="pause_menu/pause_popup/music_slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="pause_menu/pause_popup/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="pause_menu/pause_popup/back_to_menu" to="." method="_on_back_to_menu_pressed"]
+[connection signal="pressed" from="pause_button" to="main_scene" method="_on_pause_button_pressed"]

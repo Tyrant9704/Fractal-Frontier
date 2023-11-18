@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjbdkbrbixc8l"]
+
+[ext_resource type="Script" path="res://entities/player/player_bullet/player_bullet.gd" id="1_f0llk"]
+[ext_resource type="Texture2D" uid="uid://bhe4p85thm82d" path="res://textures/player_ship/bullet.png" id="1_iqyyu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c2dxw"]
+size = Vector2(15, 32)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tph5j"]
+particle_flag_disable_z = true
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+color = Color(0.00392157, 0.721569, 0.752941, 1)
+turbulence_noise_strength = 6.2
+turbulence_noise_scale = 10.0
+
+[node name="player_bullet" type="Area2D"]
+position = Vector2(352, 187)
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_f0llk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-0.5, 0)
+rotation = 1.5708
+scale = Vector2(0.38, 0.585)
+shape = SubResource("RectangleShape2D_c2dxw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0235294, 0.952941, 0.996078, 1)
+self_modulate = Color(0.0235294, 0.952941, 0.996078, 1)
+rotation = 1.5708
+scale = Vector2(0.165, 0.4)
+texture = ExtResource("1_iqyyu")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+autostart = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-11, 0)
+scale = Vector2(3.65, 3.65)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_tph5j")
+lifetime = 3.9
+speed_scale = 16.11
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

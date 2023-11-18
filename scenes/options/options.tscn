@@ -1,0 +1,118 @@
+[gd_scene load_steps=10 format=3 uid="uid://dq0undpqpgat8"]
+
+[ext_resource type="Script" path="res://scenes/options/options.gd" id="1_b7c18"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="1_v32xq"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="2_32frs"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="3_y476p"]
+[ext_resource type="FontFile" uid="uid://c46y60ln0ljmu" path="res://fonts/digital-7.ttf" id="4_q246w"]
+[ext_resource type="PackedScene" uid="uid://cnnu4h4ix1wxw" path="res://scripts/audio_slider.tscn" id="5_u20rg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8op5w"]
+shader = ExtResource("1_v32xq")
+shader_parameter/bg_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7cvbt"]
+shader = ExtResource("3_y476p")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvpx2"]
+
+[node name="options" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b7c18")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(2, 2)
+render_target_update_mode = 4
+
+[node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_8op5w")
+position = Vector2(976, 547)
+scale = Vector2(1.83959, 1.50014)
+texture = ExtResource("2_32frs")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_7cvbt")
+layout_mode = 2
+texture = ExtResource("2_32frs")
+
+[node name="pause_popup" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(220.72, 55.12)
+layout_mode = 2
+anchor_left = 0.519
+anchor_right = 0.519
+anchor_bottom = 0.993
+offset_left = -317.926
+offset_top = 51.086
+offset_right = -97.206
+offset_bottom = -375.134
+scale = Vector2(2.885, 2.885)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 10
+
+[node name="music" type="Label" parent="pause_popup"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_q246w")
+theme_override_font_sizes/font_size = 20
+text = "music"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="music_slider" parent="pause_popup" instance=ExtResource("5_u20rg")]
+layout_mode = 2
+
+[node name="sound effects" type="Label" parent="pause_popup"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_q246w")
+theme_override_font_sizes/font_size = 20
+text = "sfx"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="sfx_slider" parent="pause_popup" instance=ExtResource("5_u20rg")]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.498
+anchor_top = 1.0
+anchor_right = 0.498
+anchor_bottom = 1.0
+offset_left = -118.08
+offset_top = -116.0
+offset_right = 117.92
+offset_bottom = -56.0
+theme_override_fonts/font = ExtResource("4_q246w")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_bvpx2")
+text = "Save and quit"
+flat = true
+
+[connection signal="value_changed" from="pause_popup/music_slider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="pause_popup/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

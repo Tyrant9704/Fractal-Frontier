@@ -1,0 +1,153 @@
+[gd_scene load_steps=12 format=3 uid="uid://cun0auhuc2tta"]
+
+[ext_resource type="Script" path="res://scenes/main_menu/main_menu.gd" id="1_ns2rp"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="1_prgrb"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="2_5mgrb"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="3_fmupl"]
+[ext_resource type="FontFile" uid="uid://c46y60ln0ljmu" path="res://fonts/digital-7.ttf" id="4_l5dw4"]
+[ext_resource type="Texture2D" uid="uid://dhb21ap5rg0kr" path="res://textures/UI/title.png" id="4_trf17"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_beuja"]
+shader = ExtResource("1_prgrb")
+shader_parameter/bg_color = null
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qx818"]
+shader = ExtResource("3_fmupl")
+
+[sub_resource type="Animation" id="Animation_wrnt2"]
+resource_name = "title_pulse"
+loop_mode = 1
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:scale:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.815, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:scale:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0),
+"points": PackedFloat32Array(1, -0.25, 0, 0.25, 0, 0.815, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.5, 1)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jsr1t"]
+_data = {
+"title_pulse": SubResource("Animation_wrnt2")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6xobr"]
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ns2rp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(1956, 1104)
+render_target_update_mode = 4
+
+[node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_beuja")
+position = Vector2(976, 547)
+scale = Vector2(1.83959, 1.50014)
+texture = ExtResource("2_5mgrb")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+material = SubResource("ShaderMaterial_qx818")
+layout_mode = 2
+texture = ExtResource("2_5mgrb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jsr1t")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.508
+offset_left = -264.764
+offset_top = 58.3804
+offset_right = 272.556
+offset_bottom = 236.38
+scale = Vector2(0.999385, 0.999385)
+pivot_offset = Vector2(281.11, 85.725)
+texture = ExtResource("4_trf17")
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -260.0
+offset_right = 118.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_l5dw4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xobr")
+text = "Start Game"
+flat = true
+
+[node name="Button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_l5dw4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xobr")
+text = "Options"
+flat = true
+
+[node name="Button3" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_l5dw4")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_6xobr")
+text = "Exit"
+flat = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Button3" to="." method="_on_button_3_pressed"]
