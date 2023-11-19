@@ -1,4 +1,4 @@
-# Frectal Frontier
+# Fractal Frontier
 Demo version with debug mode of Fractal Frontier
 Version Beta 1.1
 
