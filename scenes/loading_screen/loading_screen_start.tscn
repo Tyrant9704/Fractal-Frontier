@@ -1,15 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2qcrkjie8fg0"]
+[gd_scene load_steps=8 format=3 uid="uid://b2qcrkjie8fg0"]
 
 [ext_resource type="Script" path="res://scenes/loading_screen/loading_screen_start.gd" id="1_vlg1n"]
-[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="2_efqfm"]
+[ext_resource type="Texture2D" uid="uid://dniyvsbqukme0" path="res://textures/icons/FractalFrontierGraphic.png" id="2_mry2y"]
 [ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="3_7wov8"]
 [ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="4_bayi2"]
 [ext_resource type="Texture2D" uid="uid://wth08828sfdc" path="res://textures/UI/loading_bar_frame.png" id="5_8bb8g"]
 [ext_resource type="Texture2D" uid="uid://cpineb47j4l0" path="res://textures/UI/loading_bar_fill.png" id="6_mwdpk"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6odb1"]
-shader = ExtResource("2_efqfm")
-shader_parameter/bg_color = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v6guh"]
 shader = ExtResource("4_bayi2")
@@ -35,27 +31,16 @@ offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
-own_world_3d = true
-handle_input_locally = false
-size = Vector2i(1956, 1104)
-render_target_update_mode = 4
-
-[node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
-z_as_relative = false
-material = SubResource("ShaderMaterial_6odb1")
-position = Vector2(976, 547)
-scale = Vector2(1.83959, 1.50014)
-texture = ExtResource("3_7wov8")
+texture = ExtResource("2_mry2y")
+expand_mode = 1
 
 [node name="TextureRect" type="TextureRect" parent="MarginContainer"]
 material = SubResource("ShaderMaterial_v6guh")
 layout_mode = 2
 texture = ExtResource("3_7wov8")
+expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

@@ -3,6 +3,7 @@ class_name asteroid
 
 var max_speed = 100
 var asteroid = load("res://entities/asteroid/asteroid.tscn")
+@onready var Music = get_tree().get_root().get_node("/root/music_handler")
 var size = 3
 
 

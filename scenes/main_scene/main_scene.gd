@@ -13,13 +13,13 @@ var explosion = preload("res://scripts/explosion_line.tscn")
 var pressed
 
 @onready var score_label = $"../Label"
+@onready var Music = get_tree().get_root().get_node("/root/music_handler")
 
 
 func _ready():
 	randomize()
 	screen_width = int(get_viewport_rect().size.x)
 	screen_height = int(get_viewport_rect().size.y)
-	Music.gameplay_music.play()
 	num_random_points = default_number_of_points
 	
 	
