@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://62sdet35rtvt"]
+[gd_scene load_steps=17 format=3 uid="uid://62sdet35rtvt"]
 
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_gutpv"]
 [ext_resource type="Texture2D" uid="uid://uhhp6i68lr0e" path="res://textures/player_ship/engine_thrust_light.png" id="3_1midt"]
@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://dq50oltr48re6" path="res://textures/player_ship/new_ship.png" id="3_ufyio"]
 [ext_resource type="AudioStream" uid="uid://dxsm7ouwum3dk" path="res://sounds/retro-16-bit-fx-shot-3_F_major.wav" id="4_o2bdi"]
 [ext_resource type="Texture2D" uid="uid://b0pvon1r3kv17" path="res://textures/player_ship/new_shi_lightp.png" id="5_kmim6"]
+[ext_resource type="AudioStream" uid="uid://veyplv05dyvy" path="res://sounds/8-bit-explosion_F.wav" id="7_8bboj"]
+[ext_resource type="AudioStream" uid="uid://cb6vngvd2pn5e" path="res://sounds/8-bit-kit-lazer-5.wav" id="8_fvaq8"]
+[ext_resource type="AudioStream" uid="uid://bxjgnp7u5gljf" path="res://sounds/8-bit-power-down.wav" id="9_frra2"]
+[ext_resource type="AudioStream" uid="uid://djuvcvyc2xwug" path="res://sounds/engine_sound.wav" id="10_8iwx5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_g7r5s"]
 
@@ -67,6 +71,7 @@ rotation = -1.5708
 polygon = PackedVector2Array(72.3077, 6.15411, 58.4614, 33.8464, 27.6921, 61.5386, -0.000244141, 72.3077, -26.1541, 61.5384, -56.9232, 35.3844, -70.7693, 6.15356, -72.3076, -9.23102, -50.769, -63.0771, -23.0767, -72.3078, 23.0772, -72.3076, 52.308, -63.0768, 72.3078, -10.769)
 
 [node name="engine_thrust" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-85.395, 0)
 rotation = 1.5708
 scale = Vector2(0.11, 0.11)
@@ -118,6 +123,28 @@ one_shot = true
 [node name="immortality_countdown" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
+
+[node name="sounds" type="Node" parent="."]
+
+[node name="explosion" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("7_8bboj")
+bus = &"sfx"
+
+[node name="laser" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("8_fvaq8")
+bus = &"sfx"
+
+[node name="power_down" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("9_frra2")
+bus = &"sfx"
+
+[node name="engine" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("10_8iwx5")
+bus = &"sfx"
+
+[node name="laser_2" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("4_o2bdi")
+bus = &"sfx"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="timeout" from="respawn_countdown" to="." method="_on_respawn_countdown_timeout"]

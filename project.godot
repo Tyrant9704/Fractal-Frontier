@@ -10,19 +10,19 @@ config_version=5
 
 [application]
 
-config/name="Arcade Shooter"
-run/main_scene="res://scenes/main_menu/main_menu.tscn"
+config/name="Fractal Frontier"
+run/main_scene="res://scenes/loading_screen/loading_screen_start.tscn"
 config/features=PackedStringArray("4.1", "GL Compatibility")
 boot_splash/show_image=false
 boot_splash/image="res://textures/icons/FractalFrontierGraphic.png"
+boot_splash/use_filter=false
 config/icon="res://textures/icons/playstore.png"
-boot_splash/minimum_display_time=100
+boot_splash/minimum_display_time=50
 
 [autoload]
 
 SaveFile="*res://scripts/save_file.gd"
 global="*res://scripts/global.gd"
-Music="*res://scripts/music.tscn"
 
 [display]
 

@@ -4,7 +4,7 @@ var sfx_bus = AudioServer.get_bus_index('sfx')
 var music_bus = AudioServer.get_bus_index('music')
 @onready var music_slider = $pause_menu/pause_popup/music_slider
 @onready var sfx_slider =  $pause_menu/pause_popup/sfx_slider
-
+@onready var Music = get_tree().get_root().get_node("/root/music_handler")
 var user_pref = user_settings
 
 
@@ -14,6 +14,11 @@ func _ready():
 		music_slider.value = user_pref.music_level
 	if sfx_slider:
 		sfx_slider.value = user_pref.sfx_level
+	
+	if !Music.gameplay_music.is_playing():
+		Music.gameplay_music.play()
+	else:
+		pass
 	
 
 func _on_music_slider_value_changed(value):

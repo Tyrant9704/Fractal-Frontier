@@ -1,6 +1,6 @@
 extends Control
 
-
+@onready var Music = get_tree().get_root().get_node("/root/music_handler")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play('title_pulse')
