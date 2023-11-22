@@ -1,0 +1,31 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6hovjsaeklt0"]
+
+[ext_resource type="AudioStream" uid="uid://veyplv05dyvy" path="res://sounds/8-bit-explosion_F.wav" id="1_7d1n6"]
+[ext_resource type="Script" path="res://scripts/sfx.gd" id="1_yrlo2"]
+[ext_resource type="AudioStream" uid="uid://cb6vngvd2pn5e" path="res://sounds/8-bit-kit-lazer-5.wav" id="2_48ret"]
+[ext_resource type="AudioStream" uid="uid://bxjgnp7u5gljf" path="res://sounds/8-bit-power-down.wav" id="3_4ko16"]
+[ext_resource type="AudioStream" uid="uid://djuvcvyc2xwug" path="res://sounds/engine_sound.wav" id="4_c3aef"]
+[ext_resource type="AudioStream" uid="uid://dxsm7ouwum3dk" path="res://sounds/retro-16-bit-fx-shot-3_F_major.wav" id="5_ukalt"]
+
+[node name="sfx" type="Node"]
+script = ExtResource("1_yrlo2")
+
+[node name="explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_7d1n6")
+bus = &"sfx"
+
+[node name="laser" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_48ret")
+bus = &"sfx"
+
+[node name="power_down" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_4ko16")
+bus = &"sfx"
+
+[node name="engine" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_c3aef")
+bus = &"sfx"
+
+[node name="laser_2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ukalt")
+bus = &"sfx"

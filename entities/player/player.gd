@@ -18,7 +18,7 @@ var respawn_point = Vector2(480, 270)
 
 @onready var player_bullet = preload("res://entities/player/player_bullet/player_bullet.tscn") 
 @onready var muzzle = $muzzle
-@onready var Music = get_tree().get_root().get_node("/root/music_handler")
+@onready var sfx = get_tree().get_root().get_node("/root/sfx")
 
 func _ready():
 	global_position = respawn_point
@@ -26,11 +26,11 @@ func _ready():
 func get_input():
 	var input = Vector2()
 	if Input.is_action_pressed('up'):
-		$sounds/engine.play()
+		sfx.engine.play()
 		input.y +=1
 		$AnimationPlayer.play("fly")
 	else:
-		$sounds/engine.stop()
+		sfx.engine.stop()
 
 	if Input.is_action_just_pressed("shoot"):
 		_shoot()
@@ -70,7 +70,7 @@ func _shoot():
 	var bullet = player_bullet.instantiate()
 	get_parent().add_child(bullet)
 	bullet.global_transform = muzzle.global_transform
-	$sounds/laser_2.play()
+	sfx.laser_2.play()
 
 
 func _on_area_2d_area_entered(area):
@@ -79,8 +79,8 @@ func _on_area_2d_area_entered(area):
 
 
 func _death():
-	$sounds/power_down.play()
-	$sounds/engine.stop()
+	sfx.power_down.play()
+	sfx.engine.stop()
 	var player_pos = position
 	global.lives -= 1
 	global.explosion_handler(player_pos)
