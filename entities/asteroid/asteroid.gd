@@ -3,7 +3,7 @@ class_name asteroid
 
 var max_speed = 100
 var asteroid = load("res://entities/asteroid/asteroid.tscn")
-@onready var Music = get_tree().get_root().get_node("/root/music_handler")
+@onready var sfx = get_tree().get_root().get_node("/root/sfx")
 var size = 3
 
 
@@ -32,7 +32,7 @@ func _process(delta):
 
 func _on_area_entered(area):
 	if area is player_bullet:
-		Music.explosion.play()
+		sfx.explosion.play()
 		area.queue_free()
 		var pos = position
 		var score 

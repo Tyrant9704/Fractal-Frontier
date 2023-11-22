@@ -86,6 +86,8 @@ func _on_tree_exiting():
 		child.queue_free()
 	loop_count = 0
 	num_random_points = default_number_of_points
+	
+	get_tree().get_root().get_node('sfx').queue_free()
 		
 
 
