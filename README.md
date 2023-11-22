@@ -1,6 +1,6 @@
 # Fractal Frontier
 Demo version with debug mode of Fractal Frontier
-Version Beta 1.2
+Version Beta 1.2.1
 
 ### File
 
