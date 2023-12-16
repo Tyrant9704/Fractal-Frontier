@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://bdnkpb50fhx0h"]
+
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="1_ppr5v"]
+[ext_resource type="Script" path="res://scenes/main_menu/mode_select.gd" id="1_s1ia3"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="2_fshi2"]
+[ext_resource type="FontFile" uid="uid://c46y60ln0ljmu" path="res://fonts/digital-7.ttf" id="3_s0bsj"]
+[ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="4_f6aym"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8ua5"]
+shader = ExtResource("1_ppr5v")
+shader_parameter/bg_color = null
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ditfm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mqcl"]
+shader = ExtResource("4_f6aym")
+
+[node name="mode_select" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1ia3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="MarginContainer"]
+layout_mode = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
+own_world_3d = true
+handle_input_locally = false
+size = Vector2i(996, 564)
+render_target_update_mode = 4
+
+[node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
+z_as_relative = false
+material = SubResource("ShaderMaterial_x8ua5")
+position = Vector2(976, 547)
+scale = Vector2(1.83959, 1.50014)
+texture = ExtResource("2_fshi2")
+
+[node name="buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -118.0
+offset_top = -62.0
+offset_right = 118.0
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 70
+
+[node name="classic" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s0bsj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ditfm")
+text = "Classic Mode"
+flat = true
+
+[node name="open_world" type="Button" parent="buttons"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_s0bsj")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ditfm")
+text = "Open World (comming Soon)"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_3mqcl")
+layout_mode = 2
+offset_left = -498.0
+offset_top = -346.0
+offset_right = 1458.0
+offset_bottom = 758.0
+mouse_filter = 2
+texture = ExtResource("2_fshi2")
+
+[connection signal="pressed" from="buttons/classic" to="." method="_on_classic_pressed"]
+[connection signal="pressed" from="buttons/open_world" to="." method="_on_open_world_pressed"]

@@ -55,16 +55,6 @@ func _process(delta):
 			value = rotation + rotation_speed * delta
 			rotation = lerp_angle(rotation, value, 0.5)
 
-	
-	if position.x > get_viewport_rect().size.x:
-		position.x = 0
-	elif position.x < 0:
-		position.x = get_viewport_rect().size.x
-
-	if position.y > get_viewport_rect().size.y:
-		position.y = 0
-	elif position.y < 0:
-		position.y = get_viewport_rect().size.y
 
 func _shoot():
 	var bullet = player_bullet.instantiate()
@@ -84,13 +74,14 @@ func _death():
 	var player_pos = position
 	global.lives -= 1
 	global.explosion_handler(player_pos)
-	get_tree().get_root().get_node('gameplay_scene/health_bar').remove_health()
+	get_tree().get_root().get_node('hud/health_bar').remove_health()
 	if global.lives > 0:
 		global_position = respawn_point
 		rotation_degrees = 270
 		call_deferred('respawn')
 	else:
 		get_tree().change_scene_to_file("res://scenes/score_board/score_board.tscn")
+		get_tree().get_root().get_node("/root/hud").queue_free()
 
 func respawn():
 	$Area2D/CollisionPolygon2D.disabled = true

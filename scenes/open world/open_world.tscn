@@ -1,0 +1,31 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7wwgv1jfue0g"]
+
+[ext_resource type="Script" path="res://scenes/open world/open_world.gd" id="1_7hcle"]
+[ext_resource type="PackedScene" uid="uid://62sdet35rtvt" path="res://entities/player/player.tscn" id="1_b7w02"]
+[ext_resource type="Shader" path="res://scenes/main_scene/main_scene.gdshader" id="3_p28kb"]
+[ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="4_d5mo5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cvvlr"]
+shader = ExtResource("3_p28kb")
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hyle3"]
+texture = ExtResource("4_d5mo5")
+texture_region_size = Vector2i(1000, 1000)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vq6u0"]
+tile_size = Vector2i(1000, 1000)
+sources/0 = SubResource("TileSetAtlasSource_hyle3")
+
+[node name="open_world" type="Node2D"]
+script = ExtResource("1_7hcle")
+
+[node name="TileMap" type="TileMap" parent="."]
+material = SubResource("ShaderMaterial_cvvlr")
+tile_set = SubResource("TileSet_vq6u0")
+format = 2
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_b7w02")]

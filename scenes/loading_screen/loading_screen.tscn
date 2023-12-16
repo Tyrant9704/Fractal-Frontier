@@ -28,10 +28,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -18.0
-offset_top = -12.0
-offset_right = 18.0
-offset_bottom = 12.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -42,7 +38,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(1956, 1104)
+size = Vector2i(960, 540)
 render_target_update_mode = 4
 
 [node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
@@ -52,24 +48,19 @@ position = Vector2(976, 547)
 scale = Vector2(1.83959, 1.50014)
 texture = ExtResource("2_f5ml6")
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-material = SubResource("ShaderMaterial_v6guh")
-layout_mode = 2
-texture = ExtResource("2_f5ml6")
-
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 76.95
-offset_top = 325.09
-offset_right = 95.9502
-offset_bottom = 63.3754
+offset_left = 18.32
+offset_top = 27.79
+offset_right = 43.375
+offset_bottom = -12.2102
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.825, 0.825)
-alignment = 1
+scale = Vector2(0.93, 0.93)
+alignment = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -78,6 +69,17 @@ alignment = 1
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-value = 45.0
+size_flags_horizontal = 4
+value = 32.0
 texture_under = ExtResource("3_jdrec")
 texture_progress = ExtResource("4_oqvcc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_v6guh")
+layout_mode = 2
+offset_left = -498.0
+offset_top = -282.0
+offset_right = 1458.0
+offset_bottom = 822.0
+mouse_filter = 2
+texture = ExtResource("2_f5ml6")

@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_v2i34"]
 [ext_resource type="PackedScene" uid="uid://62sdet35rtvt" path="res://entities/player/player.tscn" id="1_yt1lv"]
 
-[node name="main_scene" type="Node2D"]
+[node name="classic_mode" type="Node2D"]
 script = ExtResource("1_v2i34")
 
 [node name="player" parent="." instance=ExtResource("1_yt1lv")]

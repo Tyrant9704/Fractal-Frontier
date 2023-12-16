@@ -12,9 +12,8 @@ var loop_count = 0
 var explosion = preload("res://scripts/explosion_line.tscn")
 var pressed
 
-@onready var score_label = $"../Label"
 @onready var Music = get_tree().get_root().get_node("/root/music_handler")
-
+@onready var p = $player
 
 func _ready():
 	randomize()
@@ -28,8 +27,16 @@ func _process(delta):
 	if asteroids_count.size() == 0:
 		start_game()
 		
-		
-	score_label.text = var_to_str(global.score)
+	
+	if p.global_position.x > get_viewport_rect().size.x:
+		p.global_position.x = 0
+	elif p.global_position.x < 0:
+		p.global_position.x = get_viewport_rect().size.x
+
+	if p.global_position.y > get_viewport_rect().size.y:
+		p.global_position.y = 0
+	elif p.global_position.y < 0:
+		p.global_position.y = get_viewport_rect().size.y
 		
 func start_game():
 	# Generate random points at the beginning of the game and spawn enemies on these points
@@ -89,23 +96,5 @@ func _on_tree_exiting():
 	
 	get_tree().get_root().get_node('sfx').queue_free()
 		
-
-
-func _on_pause_button_pressed():
 	
-	pressed = !pressed
-	
-	if pressed:
-		$"../buttons".visible = false
-		$"../buttons_2".visible = false
-		$"../Label".visible = false
-		$"../health_bar".visible = false
-		$"../pause_menu".visible = true
-		get_tree().paused = true
-	else:
-		$"../buttons".visible = true
-		$"../buttons_2".visible = true
-		$"../Label".visible = true
-		$"../health_bar".visible = true
-		$"../pause_menu".visible = false
-		get_tree().paused = false
+

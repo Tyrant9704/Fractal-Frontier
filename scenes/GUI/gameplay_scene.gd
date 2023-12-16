@@ -7,6 +7,7 @@ var music_bus = AudioServer.get_bus_index('music')
 @onready var Music = get_tree().get_root().get_node("/root/music_handler")
 var user_pref = user_settings
 
+var pressed
 
 func _ready():
 	user_pref = user_pref.load_or_create()
@@ -19,6 +20,12 @@ func _ready():
 		Music.gameplay_music.play()
 	else:
 		pass
+	
+	global.reset()
+	
+func _process(delta):
+	$Label.text = var_to_str(global.score)
+
 	
 
 func _on_music_slider_value_changed(value):
@@ -40,3 +47,23 @@ func _on_back_to_menu_pressed():
 	Music.gameplay_music.stop()
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/main_menu/main_menu.tscn")
+	self.queue_free()
+
+
+func _on_pause_button_pressed():
+	pressed = !pressed
+	
+	if pressed:
+		$buttons.visible = false
+		$buttons_2.visible = false
+		$Label.visible = false
+		$health_bar.visible = false
+		$pause_menu.visible = true
+		get_tree().paused = true
+	else:
+		$buttons.visible = true
+		$buttons_2.visible = true
+		$Label.visible = true
+		$health_bar.visible = true
+		$pause_menu.visible = false
+		get_tree().paused = false

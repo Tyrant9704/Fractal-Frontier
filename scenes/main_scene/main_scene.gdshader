@@ -1,6 +1,8 @@
 shader_type canvas_item;
 
 uniform vec4 bg_color: source_color;
+uniform sampler2D viewport;
+
 
 float rand(vec2 st) {
     return fract(sin(dot(st.xy, vec2(12.9898,78.233))) * 43758.5453123);
