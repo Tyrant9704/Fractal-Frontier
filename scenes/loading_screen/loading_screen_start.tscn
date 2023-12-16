@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b2qcrkjie8fg0"]
 
 [ext_resource type="Script" path="res://scenes/loading_screen/loading_screen_start.gd" id="1_vlg1n"]
-[ext_resource type="Texture2D" uid="uid://dniyvsbqukme0" path="res://textures/icons/FractalFrontierGraphic.png" id="2_mry2y"]
+[ext_resource type="Texture2D" uid="uid://b4rbihcgoajkh" path="res://textures/UI/Fractal Frontier New Logopng.png" id="2_fd1xs"]
 [ext_resource type="Texture2D" uid="uid://brc17kdrnrniy" path="res://textures/UI/black_bg.png" id="3_7wov8"]
 [ext_resource type="Shader" path="res://scenes/main_scene/crt_shader.gdshader" id="4_bayi2"]
 [ext_resource type="Texture2D" uid="uid://wth08828sfdc" path="res://textures/UI/loading_bar_frame.png" id="5_8bb8g"]
@@ -33,13 +33,7 @@ grow_vertical = 2
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer"]
 layout_mode = 2
-texture = ExtResource("2_mry2y")
-expand_mode = 1
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-material = SubResource("ShaderMaterial_v6guh")
-layout_mode = 2
-texture = ExtResource("3_7wov8")
+texture = ExtResource("2_fd1xs")
 expand_mode = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
@@ -48,9 +42,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 76.95
-offset_top = 325.09
-offset_right = 95.9502
-offset_bottom = 63.3754
+offset_top = 347.165
+offset_right = 95.9503
+offset_bottom = 85.4506
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.825, 0.825)
@@ -66,3 +60,13 @@ layout_mode = 2
 value = 45.0
 texture_under = ExtResource("5_8bb8g")
 texture_progress = ExtResource("6_mwdpk")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_v6guh")
+layout_mode = 2
+offset_left = -18.0
+offset_top = -12.0
+offset_right = 978.0
+offset_bottom = 552.0
+texture = ExtResource("3_7wov8")
+expand_mode = 1

@@ -3,11 +3,15 @@ extends Node
 var score: int
 var lives: int
 var explosion = preload("res://scripts/explosion_line.tscn")
+
+var gameplay_scene :String
+
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
 	lives = 3
 	score = 0
+
 	
 	
 func _process(delta):

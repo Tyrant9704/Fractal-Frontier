@@ -11,10 +11,10 @@
 shader = ExtResource("1_v32xq")
 shader_parameter/bg_color = null
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvpx2"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7cvbt"]
 shader = ExtResource("3_y476p")
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bvpx2"]
 
 [node name="options" type="Control"]
 layout_mode = 3
@@ -44,7 +44,7 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="MarginContainer/SubViewportContainer"]
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(996, 564)
 render_target_update_mode = 4
 
 [node name="background" type="Sprite2D" parent="MarginContainer/SubViewportContainer/SubViewport"]
@@ -52,11 +52,6 @@ z_as_relative = false
 material = SubResource("ShaderMaterial_8op5w")
 position = Vector2(976, 547)
 scale = Vector2(1.83959, 1.50014)
-texture = ExtResource("2_32frs")
-
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-material = SubResource("ShaderMaterial_7cvbt")
-layout_mode = 2
 texture = ExtResource("2_32frs")
 
 [node name="pause_popup" type="VBoxContainer" parent="."]
@@ -112,6 +107,16 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/focus = SubResource("StyleBoxEmpty_bvpx2")
 text = "Save and quit"
 flat = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_7cvbt")
+layout_mode = 2
+offset_left = -498.0
+offset_top = -282.0
+offset_right = 1458.0
+offset_bottom = 822.0
+mouse_filter = 2
+texture = ExtResource("2_32frs")
 
 [connection signal="value_changed" from="pause_popup/music_slider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="pause_popup/sfx_slider" to="." method="_on_sfx_slider_value_changed"]
